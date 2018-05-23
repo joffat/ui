@@ -1,0 +1,2 @@
+webpackJsonp([5],{1112:function(e,t,a){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var n=a(0),c=a.n(n),l=a(280);t.default=function(){return c.a.createElement(l.a,{textAlign:"center"},c.a.createElement("h1",null,c.a.createElement(l.b,{name:"game"}),c.a.createElement("br",null)," Create Match"),c.a.createElement(l.c,{warning:!0,compact:!0},"Match Making is not available yet."))}}});
+//# sourceMappingURL=5.983919c5.chunk.js.map
