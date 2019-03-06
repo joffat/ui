@@ -2,6 +2,11 @@
     min-width: 250px;
     position: relative;
 
+    .progress-wrapper {
+        position: relative;
+        margin: 0 -1.5em;
+    }
+
     .ui.progress,
     .ui.progress:last-child {
         margin: 0.5em;
