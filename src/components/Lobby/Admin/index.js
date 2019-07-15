@@ -84,6 +84,11 @@ class LobbyAdmin extends React.PureComponent {
         
         this.props.socket.socket.on("GameList", data => {
             this.setState({availableGames: data});
+
+            if (data.length > 0) {
+                // Preselect the first game in the list
+                this.updateOption('gameAddress')(null, { value: data[0].address });
+            }
         });
 
 	    this.props.socket.socket.on('lobby tournament started', data => {
