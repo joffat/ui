@@ -27,7 +27,7 @@
   "bugs": {
     "url": "https://github.com/socialgorithm/ui/issues"
   },
-  "homepage": "https://play.socialgorithm.org",
+  "homepage": "https://play-utt.herokuapp.com",
   "dependencies": {
     "@socialgorithm/model": "8.0.1",
     "@socialgorithm/ultimate-ttt": "^4.19.0",
