@@ -73,13 +73,17 @@ class GameExplorer extends React.Component {
         if (line.indexOf(';') < 0) {
           return;
         }
+        console.log(line);
         const game = ret.games[curGame];
         const parts = line.split(' ');
         let turn = parts[0].split(';');
           let opponent = false;
-          if (parts.length > 1) {
+          if (parts.length === 2) {
             opponent = true;
             turn = parts[1].split(';');
+          } else if (parts.length === 3) {
+            opponent = true;
+            turn = parts[2].split(';');
           }
           const board = turn[0].split(',').map((coord) => parseInt(coord, 10));
           const move = turn[1].split(',').map((coord) => parseInt(coord, 10));
