@@ -73,7 +73,6 @@ class GameExplorer extends React.Component {
         if (line.indexOf(';') < 0) {
           return;
         }
-        console.log(line);
         const game = ret.games[curGame];
         const parts = line.split(' ');
         let turn = parts[0].split(';');
