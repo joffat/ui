@@ -67,12 +67,48 @@ class GameExplorer extends React.Component {
           curGame = ret.games.push({
             uttt: new UTTT(3),
             moves: [],
+            winner: -1,
           }) - 1;
           return;
         }
-        if (line.indexOf(';') < 0) {
+        if (line.startsWith('game')) {
+          if (line.startsWith("game win")){
+            ret.won = ret.won + 1;
+            ret.games[curGame].winner = PLAYER_YOU;
+            if (line.indexOf(';') >= 0) {
+              const parts = line.split(' ');
+              const turn = parts[2].split(';');
+              const board = turn[0].split(',').map((coord) => parseInt(coord, 10));
+              const move = turn[1].split(',').map((coord) => parseInt(coord, 10));
+              ret.games[curGame].moves.push({
+                board,
+                move,
+                player: PLAYER_OPPONENT,
+              });
+              ret.games[curGame].uttt = ret.games[curGame].uttt.addOpponentMove(board, move);
+            }
+          } else if (line.startsWith("game lose")){
+            ret.lost = ret.lost + 1;
+            ret.games[curGame].winner = PLAYER_OPPONENT;
+            if (line.indexOf(';') >= 0) {
+              const parts = line.split(' ');
+              const turn = parts[2].split(';');
+              const board = turn[0].split(',').map((coord) => parseInt(coord, 10));
+              const move = turn[1].split(',').map((coord) => parseInt(coord, 10));
+              console.log(board, move);
+              ret.games[curGame].moves.push({
+                board,
+                move,
+                player: PLAYER_OPPONENT,
+              });
+              ret.games[curGame].uttt = ret.games[curGame].uttt.addOpponentMove(board, move);
+            }
+          } else if (line.startsWith("game tie")) {
+            ret.tied = ret.tied + 1;
+          }
           return;
         }
+        if (line.indexOf(';') < 0) return;
         const game = ret.games[curGame];
         const parts = line.split(' ');
         let turn = parts[0].split(';');
@@ -99,21 +135,6 @@ class GameExplorer extends React.Component {
             game.uttt = game.uttt.addMyMove(board, move);
           }
 
-          // update state
-          if (game.uttt.isFinished()) {
-            switch (game.uttt.getResult()) {
-              case PLAYER_YOU:
-                ret.won = ret.won + 1;
-                break;
-              case PLAYER_OPPONENT:
-                ret.lost = ret.lost + 1;
-                break;
-              default:
-              case -1:
-                ret.tied = ret.tied + 1;
-                break;
-            }
-          }
       });
     } catch(e) {
       console.error('Error parsing game', e);
@@ -190,7 +211,7 @@ class GameExplorer extends React.Component {
             { this.state.games.map((game, $index) => (
               <List.Item key={ $index } active={ $index === this.state.activeGame } onClick={ () => { this.setState({ activeGame: $index, activeMove: -1, }); } }>
                 <List.Content>
-                  { this.printWinner(game.uttt.winner) } { game.uttt.moves } moves
+                  { this.printWinner(game.winner) } { game.uttt.moves } moves
                 </List.Content>
               </List.Item>
             )) }
