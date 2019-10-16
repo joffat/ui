@@ -53,7 +53,7 @@ class Header extends React.Component {
             />
           ))
         }
-        <Menu.Item href="https://socialgorithm.org/docs/" target='_blank'>
+        <Menu.Item href="https://github.com/joffat/docs" target='_blank'>
           <Icon name='book'/>
           Docs
         </Menu.Item>
