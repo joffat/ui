@@ -31,7 +31,7 @@ class LobbyAdmin extends React.PureComponent {
             },
             tournamentOptions: {
                 gameAddress: null,
-                timeout: 200,
+                timeout: 500,
                 numberOfGames: 20,
                 type: 'DoubleElimination',
 	            autoPlay: false

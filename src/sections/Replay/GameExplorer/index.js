@@ -130,9 +130,17 @@ class GameExplorer extends React.Component {
           });
 
           if (opponent) {
-            game.uttt = game.uttt.addOpponentMove(board, move);
+            try {
+              game.uttt = game.uttt.addOpponentMove(board, move);
+            } catch {
+              
+            }
           } else {
-            game.uttt = game.uttt.addMyMove(board, move);
+            try {
+              game.uttt = game.uttt.addMyMove(board, move);
+            } catch {
+
+            }
           }
 
       });
