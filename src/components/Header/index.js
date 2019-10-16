@@ -35,7 +35,7 @@ class Header extends React.Component {
         <Menu.Item header
                    as='a'
                    className='socialgorithm-logo animated-hue'
-                   href='https://socialgorithm.org'
+                   href='https://play-uttt.herokuapp.com'
         >
           #socialgorithm
         </Menu.Item>

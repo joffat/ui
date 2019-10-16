@@ -19,7 +19,7 @@ export default class Home extends React.Component {
             <Grid columns={ 3 }>
                     <Grid.Row>
                         <Grid.Column>
-                            <h1><a href='https://socialgorithm.org/docs' title='Documentation'>
+                            <h1><a href='https://github.com/joffat/docs' title='Documentation'>
                                 <Icon name='book' /><br/ >
                                 Documentation
                             </a></h1>
